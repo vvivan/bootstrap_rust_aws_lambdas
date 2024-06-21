@@ -2,5 +2,9 @@
 name = "bootstrap_aws_lambdas"
 version = "0.0.1"
 edition = "2021"
+authors = ["Ivan Videnovic"]
+description = "Bootstrap AWS Lambda Binaries with Rust"
+keywords = ["aws", "lambda", "binary", "bootstrap", "rust"]
+license = "MIT"
 
 [dependencies]
