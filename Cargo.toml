@@ -4,7 +4,7 @@ version = "0.0.2"
 edition = "2021"
 authors = ["Ivan Videnovic"]
 description = "Bootstrap AWS Lambda Binaries with Rust"
-keywords = ["aws", "cdk", "lambda", "function", "binary", "bootstrap", "rust"]
+keywords = ["aws", "cdk", "lambda", "function", "bootstrap"]
 repository = "https://github.com/vvivan/bootstrap_rust_aws_lambdas"
 license = "MIT"
 
