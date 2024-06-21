@@ -1,13 +1,12 @@
-use std::{env, io, iter::zip, path::PathBuf};
+use std::{env, io, iter::zip};
 
-use bootstrap_aws_lambdas::{build_paths, copy_file, get_executable_files, get_filenames};
+use bootstrap_aws_lambdas::{
+    build_paths, copy_file, get_executable_files, get_filenames, CopyFileError,
+};
 
 fn main() -> io::Result<()> {
     let args: Vec<String> = env::args().collect();
     let args_lenght = args.len();
-
-    println!("app args: {args:?}");
-    println!("args length: {args_lenght:?}");
 
     if args_lenght != 3 {
         print!("Usage: bootstrap [folder]");
@@ -19,14 +18,17 @@ fn main() -> io::Result<()> {
     let files = get_executable_files(&args[1])?;
     let filenames = get_filenames(&files);
     let build_files = build_paths(&filenames, &args[2]);
-    let zipped: Vec<(PathBuf, String)> = zip(files, build_files).collect();
 
-    let result = zipped
-        .iter()
+    let bootstrap_result: Result<Vec<u64>, CopyFileError> = zip(files, build_files)
         .map(|(from, to)| copy_file(from, to))
-        .collect::<Vec<_>>();
+        .collect();
 
-    println!("Result: {:?}", result);
+    let result = match bootstrap_result {
+        Ok(_) => "Lambdas bootstrapped successfully!".to_owned(),
+        Err(e) => format!("Error bootstrapping lambdas: {:?}", e),
+    };
+
+    println!("{:?}", result);
 
     Ok(())
 }
