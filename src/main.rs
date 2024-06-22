@@ -9,7 +9,8 @@ fn main() -> io::Result<()> {
     let args_lenght = args.len();
 
     if args_lenght != 3 {
-        print!("Usage: bootstrap [folder]");
+        println!("\nUsage:\n");
+        println!("bootstrap_aws_lambdas <source_path> <target_path>");
         return Ok(());
     }
 
