@@ -5,7 +5,9 @@ edition = "2021"
 authors = ["Ivan Videnovic"]
 description = "Bootstrap AWS Lambda Binaries with Rust"
 keywords = ["aws", "cdk", "lambda", "function", "bootstrap"]
+categories = ["command-line-utilities", "development-tools"]
 repository = "https://github.com/vvivan/bootstrap_rust_aws_lambdas"
+readme = "README.md"
 license = "MIT"
 
 [dependencies]
